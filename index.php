@@ -7,23 +7,8 @@ $email = $_GET["email"];
 //echo $email;
 
 
-function correct_email($mail){
 
-    if (str_contains($mail,".") && str_contains($mail,"@")){
-        return true;
-    }
-    return false;
-}
-
-
-if(isset($_GET["email"]))   //con la funzione isset controllo se dalla superglobale GET il valore email è stato inserito
-{
-    if(correct_email($email)){  //se il valore è stato inserito evoco la funzione correct_email che mi restituisce true o false
-        echo "puoi accedere";
-    } else {
-        echo "non puoi accedere";
-    }
-} 
+include 'function.php';
 
 ?>
 
@@ -43,12 +28,17 @@ if(isset($_GET["email"]))   //con la funzione isset controllo se dalla superglob
         <button type="submit">Invia form</button>
     </form>
 
-    <a href="index.php">Refresh</a>
+    <div><a href="index.php">Refresh</a></div>
 
     <?php      
-        if(correct_email($email)){
-          echo " <div>Ciao, benvenuto $email</div>";
-        }
+       if(isset($_GET["email"]))   //con la funzione isset controllo se dalla superglobale GET il valore email è stato inserito
+       {
+           if(correct_email($email)){  //se il valore è stato inserito evoco la funzione correct_email che mi restituisce true o false
+               echo "puoi accedere";
+           } else {
+               echo "non puoi accedere";
+           }
+       } 
 
     ?>
 </body>
